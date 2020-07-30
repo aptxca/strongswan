@@ -102,6 +102,8 @@ enum signature_scheme_t {
 	SIGN_ECDSA_WITH_NULL,
 	/** ECDSA on the P-256 curve with SHA-256 as in RFC 4754           */
 	SIGN_ECDSA_256,
+	/** ECDSA on the SM2 curve with SM3                                */
+	SIGN_ECDSA_SM2_SM3,
 	/** ECDSA on the P-384 curve with SHA-384 as in RFC 4754           */
 	SIGN_ECDSA_384,
 	/** ECDSA on the P-521 curve with SHA-512 as in RFC 4754           */

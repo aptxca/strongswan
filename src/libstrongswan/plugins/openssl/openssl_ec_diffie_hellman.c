@@ -622,7 +622,7 @@ openssl_ec_diffie_hellman_t *openssl_ec_diffie_hellman_create(diffie_hellman_gro
 			this->key = EC_KEY_new_by_curve_name(NID_secp224r1);
 			break;
 		case ECP_256_BIT:
-			this->key = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);
+			this->key = EC_KEY_new_by_curve_name(NID_sm2);
 			break;
 		case ECP_384_BIT:
 			this->key = EC_KEY_new_by_curve_name(NID_secp384r1);

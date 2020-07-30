@@ -174,6 +174,9 @@ METHOD(private_key_t, sign, bool,
 		case SIGN_ECDSA_521:
 			return build_curve_signature(this, scheme, NID_sha512,
 										 NID_secp521r1, data, signature);
+		case SIGN_ECDSA_SM2_SM3:
+			return build_curve_signature(this, scheme, NID_sm3,
+										 NID_sm2, data, signature);
 		default:
 			DBG1(DBG_LIB, "signature scheme %N not supported",
 				 signature_scheme_names, scheme);
@@ -365,7 +368,7 @@ openssl_ec_private_key_t *openssl_ec_private_key_gen(key_type_t type,
 	switch (key_size)
 	{
 		case 256:
-			this->ec = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);
+			this->ec = EC_KEY_new_by_curve_name(NID_sm2);
 			break;
 		case 384:
 			this->ec = EC_KEY_new_by_curve_name(NID_secp384r1);

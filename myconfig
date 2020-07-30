@@ -1,0 +1,1 @@
+./configure --enable-monolithic --enable-systemd --enable-swanctl --disable-charon --disable-stroke --disable-scepclient --disable-shared --enable-static --enable-openssl --prefix=/usr/local/hnac/amd64/test/ipsec-with-openssl/

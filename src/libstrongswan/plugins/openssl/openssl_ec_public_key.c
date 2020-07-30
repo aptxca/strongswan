@@ -174,6 +174,9 @@ METHOD(public_key_t, verify, bool,
 		case SIGN_ECDSA_521:
 			return verify_curve_signature(this, scheme, NID_sha512,
 										  NID_secp521r1, data, signature);
+		case SIGN_ECDSA_SM2_SM3:
+			return verify_curve_signature(this, scheme, NID_sm3,
+										  NID_sm2, data, signature);
 		default:
 			DBG1(DBG_LIB, "signature scheme %N not supported in EC",
 				 signature_scheme_names, scheme);
