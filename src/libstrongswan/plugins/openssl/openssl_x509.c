@@ -1123,6 +1123,8 @@ static bool parse_certificate(private_openssl_x509_t *this)
 					BUILD_END);
 			break;
 		case OID_EC_PUBLICKEY:
+		case OID_SM2_WITH_SM3:
+		case OID_SM2:
 			/* for ECDSA, we need the full subjectPublicKeyInfo, as it contains
 			 * the curve parameters. */
 			chunk = openssl_i2chunk(X509_PUBKEY, X509_get_X509_PUBKEY(this->x509));

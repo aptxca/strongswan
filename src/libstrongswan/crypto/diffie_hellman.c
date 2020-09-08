@@ -44,7 +44,9 @@ ENUM_NEXT(diffie_hellman_group_names, MODP_1024_160, CURVE_448, ECP_521_BIT,
 	"ECP_512_BP",
 	"CURVE_25519",
 	"CURVE_448");
-ENUM_NEXT(diffie_hellman_group_names, MODP_NULL, MODP_NULL, CURVE_448,
+ENUM_NEXT(diffie_hellman_group_names, CURVE_SM2, CURVE_SM2, CURVE_448,
+	"CURVE_SM2");
+ENUM_NEXT(diffie_hellman_group_names, MODP_NULL, MODP_NULL, CURVE_SM2,
 	"MODP_NULL");
 ENUM_NEXT(diffie_hellman_group_names, NTRU_112_BIT, NTRU_256_BIT, MODP_NULL,
 	"NTRU_112",
@@ -546,6 +548,9 @@ bool diffie_hellman_verify_value(diffie_hellman_group_t group, chunk_t value)
 			break;
 		case ECP_521_BIT:
 			valid = value.len == 132;
+			break;
+		case CURVE_SM2:
+			valid = value.len == 64;
 			break;
 		case CURVE_25519:
 			valid = value.len == 32;

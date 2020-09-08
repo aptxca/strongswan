@@ -24,6 +24,7 @@ ENUM(key_type_names, KEY_ANY, KEY_BLISS,
 	"ANY",
 	"RSA",
 	"ECDSA",
+	"SM2",
 	"DSA",
 	"ED25519",
 	"ED448",
@@ -49,6 +50,7 @@ ENUM(signature_scheme_names, SIGN_UNKNOWN, SIGN_BLISS_WITH_SHA3_512,
 	"ECDSA_WITH_SHA384_DER",
 	"ECDSA_WITH_SHA512_DER",
 	"ECDSA_WITH_NULL",
+	"ECDSA_SM2_WITH_SM3",
 	"ECDSA-256",
 	"ECDSA-384",
 	"ECDSA-521",
@@ -159,6 +161,8 @@ signature_scheme_t signature_scheme_from_oid(int oid)
 			return SIGN_ECDSA_WITH_SHA384_DER;
 		case OID_ECDSA_WITH_SHA512:
 			return SIGN_ECDSA_WITH_SHA512_DER;
+		case OID_SM2_WITH_SM3:
+			return SIGN_ECDSA_SM2_SM3;
 		case OID_ED25519:
 			return SIGN_ED25519;
 		case OID_ED448:
@@ -240,6 +244,8 @@ int signature_scheme_to_oid(signature_scheme_t scheme)
 			return OID_BLISS_WITH_SHA3_384;
 		case SIGN_BLISS_WITH_SHA3_512:
 			return OID_BLISS_WITH_SHA3_512;
+		case SIGN_ECDSA_SM2_SM3:
+			return OID_SM2_WITH_SM3;
 	}
 	return OID_UNKNOWN;
 }
@@ -364,6 +370,7 @@ key_type_t key_type_from_signature_scheme(signature_scheme_t scheme)
 		case SIGN_ECDSA_256:
 		case SIGN_ECDSA_384:
 		case SIGN_ECDSA_521:
+		case SIGN_ECDSA_SM2_SM3:
 			return KEY_ECDSA;
 		case SIGN_ED25519:
 			return KEY_ED25519;

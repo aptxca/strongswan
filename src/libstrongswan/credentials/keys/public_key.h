@@ -41,14 +41,16 @@ enum key_type_t {
 	KEY_RSA     = 1,
 	/** ECDSA as in ANSI X9.62 */
 	KEY_ECDSA   = 2,
+	/** ECDSA-SM2  */
+	KEY_SM2 = 3,
 	/** DSA */
-	KEY_DSA     = 3,
+	KEY_DSA     = 4,
 	/** Ed25519 PureEdDSA instance as in RFC 8032 */
-	KEY_ED25519 = 4,
+	KEY_ED25519 = 5,
 	/** Ed448   PureEdDSA instance as in RFC 8032 */
-	KEY_ED448   = 5,
+	KEY_ED448   = 6,
 	/** BLISS */
-	KEY_BLISS = 6,
+	KEY_BLISS = 7,
 };
 
 /**

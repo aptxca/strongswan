@@ -191,6 +191,9 @@ openssl_crypter_t *openssl_crypter_create(encryption_algorithm_t algo,
 			this->cipher = EVP_enc_null();
 			key_size = 0;
 			break;
+		case ENCR_SM4_CBC:
+			this->cipher = EVP_get_cipherbyname("sm4-cbc");
+			break;
 		case ENCR_AES_CBC:
 			switch (key_size)
 			{

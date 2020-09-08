@@ -208,7 +208,9 @@ time_t asn1_to_time(chunk_t *,int);
  */
 int openssl_asn1_known_oid(const ASN1_OBJECT *obj)
 {
-	return asn1_known_oid(openssl_asn1_obj2chunk(obj));
+	int oid = asn1_known_oid(openssl_asn1_obj2chunk(obj));
+	DBG4(DBG_LIB, "oid : %d",oid);
+	return oid;
 }
 
 /**

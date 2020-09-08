@@ -1,0 +1,1 @@
+./configure --enable-monolithic  --disable-shared --enable-static --enable-openssl --prefix=/usr/local/hnac/ipsec --build=x86_64 --host=arm-cortex_a8-linux-gnueabi CC=arm-cortex_a8-linux-gnueabi-gcc LDFLAGS="-L/usr/local/hnac/openssl/lib -L/usr/local/hnac/libs/lib" LIBS="-lcrypto -lssl -lgmp" CPPFLAGS="-I/usr/local/hnac/openssl/include -I/usr/local/hnac/libs/include"

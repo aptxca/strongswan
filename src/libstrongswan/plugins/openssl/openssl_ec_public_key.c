@@ -146,7 +146,11 @@ static bool verify_der_signature(private_openssl_ec_public_key_t *this,
 METHOD(public_key_t, get_type, key_type_t,
 	private_openssl_ec_public_key_t *this)
 {
-	return KEY_ECDSA;
+	int keysize = EC_GROUP_get_degree(EC_KEY_get0_group(this->ec));
+	if(keysize == 256)
+		return KEY_SM2;
+	else
+		return KEY_ECDSA;
 }
 
 METHOD(public_key_t, verify, bool,

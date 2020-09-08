@@ -200,8 +200,12 @@ METHOD(private_key_t, get_keysize, int,
 
 METHOD(private_key_t, get_type, key_type_t,
 	private_openssl_ec_private_key_t *this)
-{
-	return KEY_ECDSA;
+{	
+	int keysize = EC_GROUP_get_degree(EC_KEY_get0_group(this->ec));
+	if(keysize == 256)
+		return KEY_SM2;
+	else
+		return KEY_ECDSA;
 }
 
 METHOD(private_key_t, get_public_key, public_key_t*,
@@ -345,7 +349,7 @@ openssl_ec_private_key_t *openssl_ec_private_key_gen(key_type_t type,
 {
 	private_openssl_ec_private_key_t *this;
 	u_int key_size = 0;
-
+	
 	while (TRUE)
 	{
 		switch (va_arg(args, builder_part_t))

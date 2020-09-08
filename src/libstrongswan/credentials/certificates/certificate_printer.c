@@ -542,9 +542,15 @@ static void print_pubkey(private_certificate_printer_t *this, public_key_t *key,
 {
 	chunk_t chunk;
 	FILE *f = this->f;
-
-	fprintf(f, "  pubkey:    %N %d bits", key_type_names, key->get_type(key),
-				key->get_keysize(key));
+	if(key->get_type(key) == KEY_ECDSA && key->get_keysize(key) == 256){
+		fprintf(f, "  pubkey:    %N %d bits", key_type_names, KEY_SM2,
+					key->get_keysize(key));
+	}
+	else{
+		fprintf(f, "  pubkey:    %N %d bits", key_type_names, key->get_type(key),
+					key->get_keysize(key));
+	}
+	
 	if (has_privkey)
 	{
 		fprintf(f, ", has private key");

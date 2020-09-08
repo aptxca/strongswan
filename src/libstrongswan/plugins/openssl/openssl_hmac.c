@@ -200,7 +200,7 @@ static mac_t *hmac_create(hash_algorithm_t algo)
 prf_t *openssl_hmac_prf_create(pseudo_random_function_t algo)
 {
 	mac_t *hmac;
-
+	DBG4(DBG_LIB, "openssl creating hmac_prf, algo %d", algo);
 	hmac = hmac_create(hasher_algorithm_from_prf(algo));
 	if (hmac)
 	{
